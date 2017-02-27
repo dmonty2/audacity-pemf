@@ -6,7 +6,7 @@
 ;action "Generating PEMF Pulse ..."
 ;author "Dean Montgomery"
 ;copyright "Released under terms of the GNU General Public License version 2"
-;control magfreq "Magnet frequency" int "Hz" 120 1 1000
+;control magfreq "Magnet frequency" int "Hz" 125 1 1000
 ;control magduty "Magnet duty cycle" int "%" 5 1 99
 ;control magamp "Magnet Amplitude" int "%" 100 80 100
 ;control pulsefreq "Pulse frequency" int "Hz e.g. 12,4,8,20,2" 12 1 50
