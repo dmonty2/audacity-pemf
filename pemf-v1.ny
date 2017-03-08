@@ -2,7 +2,7 @@
 ;version 4
 ;type generate
 ;name "PEMF v1"
-;preview false
+;preview true
 ;action "Generating PEMF Pulse ..."
 ;author "Dean Montgomery"
 ;copyright "Released under terms of the GNU General Public License version 2"
