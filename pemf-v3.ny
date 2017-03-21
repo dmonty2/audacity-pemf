@@ -14,7 +14,8 @@
 (setf dur (* dur 60))
 (setf pulseduty 0.5)
 (setf x (/ magfreq 44100)) ;; = 0.00272108844
-(setq *mag-pulse-table* (list  
+;;; magnet waveform
+(setf *mag-pulse-table* (list  
   (pwl 
        (* 1 x) -0.01876
        (* 2 x) -0.11868
@@ -65,12 +66,20 @@
        (* 241 x) -0.02797
        (* 367.5 x))
   (hz-to-step 1) t))
-(setq *pulse-table* (list  
+
+;;; pulse
+(setf *pulse-table* (list  
   (pwl 0 1 pulseduty 1 pulseduty 0 1)
   (hz-to-step 1) t))
 
-(seqrep ( i dur ) 
+;;; normalize output
+(defun nrmlz (sig)
+  (let ((peak (peak sig ny:all)))
+    (mult (/ peak) sig)))
+
+;;; main driver
+(nrmlz (seqrep ( i dur ) 
   (mult 
     (hzosc magfreq *mag-pulse-table*)
-    (hzosc pulsefreq *pulse-table*)))
+    (hzosc pulsefreq *pulse-table*))))
 
