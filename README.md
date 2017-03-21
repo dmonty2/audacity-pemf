@@ -2,13 +2,15 @@
 Audacity - Pulsed Electromagnetic Field (PEMF) waveform generator.  This is a waveform generator for pulsing a magnet.
 https://en.wikipedia.org/wiki/Pulsed_electromagnetic_field_therapy
 
-Use Google Scholar to find peer reviewed double-blind papers what PEMF is used for.  It works at both the molecular and cellurlar levels.
+Disclaimer:  These plugins are not intended for the diagnosis, treatment or cure of any physical or medical condition. If you are experiencing symptoms of a physical or medical condition, you should seek the advice of your medical professional immediately.  There may be opinions expressed about PEMF, however they should not be interpreted as medical advice.
+
+Use Google Scholar to find peer reviewed double-blind papers what PEMF is used for.  These plugins are for the purpose of finding optimal ways to generate electormagnetic pulses.
 
 I was introduced to a PEMF machine that helped several family ailments.  The machine was very expensive so I decided to build one.  General idea is to find some good frequencies that drive the magnet at a fast rate and at the same time pulse that frequency on/off at a low rate.
 
-pemf-v1.ny - Is for generating a single freqency.  Used this to test the amp and magnetic coil.  Also created 1 minute frequencies and looped them.  There are some shortcomings that still need to be worked on on this.
+pemf-v1.ny - Is for generating and testing single freqencies.  Used this to test the amp and magnetic coil.  Also created 1 minute frequencies and looped them.  There are some shortcomings that still need to be worked on on this.
 
-pemf-list.ny - Is for pasting lists of freqencies to create a longer varied PEMF session.
+pemf-list.ny - Is for generating and testing multiple frequencies.   Pasting lists of freqencies to create a longer varied PEMF session.
  - Grab a list of frequencies http://www.electroherbalism.com/Bioelectronics/FrequenciesandAnecdotes/CAFL.htm
  - The above list does not include pulse rate.  I used the lower frequencies < 50 to pulse the magnet which is running at the higher frequencies.
  - frequency@pluserate:minutes,frequency2@pulserate2:minutes2,... comma seperated sets.  frequency the magnet runs at, [ optional @pulserate for magnet on/off Hz], [ optional :minutes to run ]
