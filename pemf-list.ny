@@ -6,7 +6,7 @@
 ;action "Generating PEMF Pulse ..."
 ;author "Dean Montgomery"
 ;copyright "Released under terms of the GNU General Public License version 2"
-;control ptable "Pulse Form" choice "Semi-Sawtooth,Square Pulse,Sine Pulse,Growing Sine2" 0
+;control ptable "Pulse Form" choice "Semi-Sawtooth,Square Pulse,Sine Pulse,Sine Growth2" 0
 ;control magfreqs "frequency@pulse:minutes,... " string "comma seperated list integers" "880@10,787@8:5,727,20@10"
 ;control default_pulse "Default pulse Hz" int "default @Hz(20)" 20 1 900
 ;control default_time "Default time" int "default :minutes for each set (10)" 10 1 30
@@ -34,8 +34,8 @@
   (if (and (= 1 (length n)) (integerp (first n)))
     (first n) 0))
 
-;;; bemer frequency - can't sell it, however math is free.
-(defun bemer (x)
+;;; can't sell it, however, math is free.
+(defun free-math (x)
   (* x x x (power (exp 1.0) (sin (* x 3))) 1))
 
 ;;; pemf - args: string containing frequency@pulsefreq:duration - returns sound
@@ -69,22 +69,24 @@
       (setf magfreq (str-to-int frq))
       (setf pulsefreq default_pulse)
       (setf duration (* 60 default_time))))
-  (print "=====")
-  (print pos-neg)
-  (print invert)
-  (print frq)
-  (print magfreq)
-  (print pulsefreq)
-  (print duration)
-  (print magduty)
-  (print pulseduty)
-  (print magamp)
+  ;;(print "=====")
+  ;;(print pos-neg)
+  ;;(print invert)
+  ;;(print frq)
+  ;;(print magfreq)
+  ;;(print pulsefreq)
+  ;;(print duration)
+  ;;(print magduty)
+  ;;(print pulseduty)
+  ;;(print magamp)
   (setf laststp (/ 44100.0 (float magfreq)))
-  (print "laststp:")
-  (print laststp)
-  (setf x (/ (float magfreq) 44100.0))
-  (print "x:")
-  (print x)
+  ;;(print "laststp:")
+  ;;(print laststp)
+  ;; x - step multiplier for pwl tables.
+  (setf x (/ (float magfreq) (float *sound-srate*)))
+  ;;(print "x:")
+  ;;(print x)
+  ;;(print "================")
   ;;(setf x 60)
   ;; note 5 steps before magnet drops on it's own.
   (setf single-pulse-table (list  
@@ -118,9 +120,34 @@
        1)
      (hz-to-step 1) t))
 
-;;  (setf bemer2-pulse-table (list
-;;    (pwl
-;;      (* 1 x) (TODO)
+    (setf dur 0.0025)
+    (setf xmin 4.0)
+    (setf xmax 13.8)
+    (setf num (truncate (* dur (float *sound-srate*))))
+    (setf arout (make-array num))
+    (setf mlist '())
+    (setf range (- xmax xmin))
+    (setf sstep (/ range (1- num)))
+    (setf mx 0.0)
+    (dotimes (i num)
+      (setf y (+ xmin (* i sstep)))
+      (setf fi (* (float i) x))
+      (push fi mlist)
+      (setf f-m-y (free-math y))
+      (push f-m-y mlist)
+      (if (> f-m-y mx) (setf mx f-m-y)))
+    ;; normalize the y axis
+    ;;(format t "mx: ~a    " mx)
+    (dotimes (i (length mlist))
+      (if (evenp i)
+        (if (not (eq (nth i mlist) 0))
+          (setf (nth i mlist) (* (/ 1.0 mx) (nth i mlist))))))
+    (push 1  mlist)
+    (setf mlist (reverse mlist))
+    (setf fx2-table (list
+      (pwl-list mlist)
+      (hz-to-step 1) t))
+    
 
   (setf semi-sawtooth-table (list  
     ;;(pwl 0 magamp magduty magamp magduty 0 1 0 1)
@@ -168,7 +195,7 @@
       (0 semi-sawtooth-table)
       (1 square-pulse-table)
       (2 single-pulse-table)
-      (3 growing-sine2-table)
+      (3 fx2-table)
       (T semi-sawtooth-table))) 
   (seqrep ( i duration ) 
       (mult invert (mult 
