@@ -11,7 +11,6 @@ I was introduced to a PEMF machine that helped several family ailments.  The mac
 pemf-v1.ny - Is for generating and testing single freqencies.  Used this to test the amp and magnetic coil.  Also created 1 minute frequencies and looped them.  There are some shortcomings that still need to be worked on on this.
 
 pemf-list.ny - Is for generating and testing multiple frequencies.   Pasting lists of freqencies to create a longer varied PEMF session.
- - Grab a list of frequencies http://www.electroherbalism.com/Bioelectronics/FrequenciesandAnecdotes/CAFL.htm
  - The above list does not include pulse rate.  I used the lower frequencies < 50 to pulse the magnet which is running at the higher frequencies.
  - frequency@pluserate:minutes,frequency2@pulserate2:minutes2,... comma seperated sets.  frequency the magnet runs at, [ optional @pulserate for magnet on/off Hz], [ optional :minutes to run ]
  - Default pulse Hz - when @pulserate is not specified.
@@ -32,7 +31,7 @@ pemf-v3.ny - Has less options and is overall easier to operate.
 
 Parts:
  - Magnetic deguase coil from old CRT.
- - Amplifier - old home stereo.
+ - Amplifier - old home stereo/receiver.
  - Microphone is used to record magnetic field (wave-form & intensity). i.e. Find a frequency that generates optimal magnetic pulse with the given equipment.
  - The Audacity pemf v1 plugin was built to test various frequencies and duty cycle for my amp/magnet.  Note your magnet/amplifier may have different optimizations.  Found high-end stereos have allot less distortion and can drive a stronger magnetic field at all frequencies.  Battery powered amplifiers do not drive the magnet very well.
  - Use Audacity to generate a pulse, and play it back while recording the result on another track in audacity.  This will show you the quality/intensity of the pulse.  I was aiming for High (+)pulse one direction with least amount (-)pulse below the line.  Too much volume or wrong stereo settings will distor the pulse.
