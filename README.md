@@ -1,27 +1,25 @@
 # audacity-pemf
-Audacity - Pulsed Electromagnetic Field (PEMF) waveform generator.  This is a waveform generator for pulsing a magnet.
+Audacity - Pulsed Electromagnetic Field (PEMF) waveform generator.  These plugins help create various wave forms and frequencies in order to drive an electromagnet.
 https://en.wikipedia.org/wiki/Pulsed_electromagnetic_field_therapy
 
 Disclaimer:  These plugins are not intended for the diagnosis, treatment or cure of any physical or medical condition. If you are experiencing symptoms of a physical or medical condition, you should seek the advice of your medical professional immediately.  There may be opinions expressed about PEMF, however they should not be interpreted as medical advice.
 
 Use Google Scholar to find peer reviewed double-blind papers what PEMF is used for.  These plugins are for the purpose of finding optimal ways to generate electormagnetic pulses.
 
-I was introduced to a PEMF machine that helped several family ailments.  The machine was very expensive so I decided to build one.  General idea is to find some good frequencies that drive the magnet at a fast rate and at the same time pulse that frequency on/off at a low rate.
+I was introduced to a PEMF machine that helped several family ailments.  The machine was very expensive so I decided to build one.  General idea is to find some several wave forms + frequencies to drive the magnet and at the same time pulse that frequency on/off at a low rate.
 
-pemf-v1.ny - Is for generating and testing single freqencies.  Used this to test the amp and magnetic coil.  Also created 1 minute frequencies and looped them.  There are some shortcomings that still need to be worked on on this.
+pemf-v1.ny - Is for generating and testing single freqencies.  Used this to test the amp and magnetic coil.
 
 pemf-list.ny - Is for generating and testing multiple frequencies.   Pasting lists of freqencies to create a longer varied PEMF session.
- - The above list does not include pulse rate.  I used the lower frequencies < 50 to pulse the magnet which is running at the higher frequencies.
- - frequency@pluserate:minutes,frequency2@pulserate2:minutes2,... comma seperated sets.  frequency the magnet runs at, [ optional @pulserate for magnet on/off Hz], [ optional :minutes to run ]
+ - Run the magnet at a higher frequency and pulse the magnet at a low frequency.
+ - Wave Form - Bassett,Bemer,Square,Sine.  This is the wave form of a single magnetic pulse that will be repeated at the higher frequency.
+ - frequency@pluserate:minutes,frequency2@pulserate2:minutes2,... comma seperated sets.  frequency the magnet runs at, [ optional @pulserate for magnet on/off Hz], [ optional :minutes to run ].  Can also invert the wave with -freq e.g. -120@8.
  - Default pulse Hz - when @pulserate is not specified.
  - Default time - minutes to run each set when :minutes is not specified.
- - Pulse duty cycle - % of the pulse cycle that will be in the ON state. (49-50% even on/off)
- - Magnet duty cycle - % of the magnet pulse cycle that will be in the ON state ( lower fast bursts are better ).  Faster magnet frequency means shorter duty cycle - may change this in the future to automatically pick an optimal duty cycle for all frequencies.
- - Magnet amplitude - just shy of 100% keeps waveform clean.
-
- - An issue with pulserate is that higher frequencies narrow the pulse to under 1ms reducing magnet's efficiency.
- - Another issue is the pulse is square - a sawtooth DC pulse may be better.
-
+ - Pulse duty cycle - % of the pulse cycle that will be in the ON state. (49-50% even on/off).  For some waveforms this is not implemented and defaults to 50%.
+ - Magnet duty cycle - This is not used in current release and may soon be removed.  It was useful in finding an optimal duration of the main pulse which is 0.5ms to 1.0ms.  The magnetic field quickly falls off with longer duty cycles.
+ - Magnet amplitude - just shy of 100% keeps waveform clean.  This has also been replaced with "normalize" function.
+ -
 
 pemf-v3.ny - Has less options and is overall easier to operate.
  - magnet pulserate is fixed at 120Hz in a semi sawtooth DC pulse.
@@ -30,8 +28,8 @@ pemf-v3.ny - Has less options and is overall easier to operate.
  
 
 Parts:
- - Magnetic deguase coil from old CRT.
- - Amplifier - old home stereo/receiver.
+ - Deguasser coil from old CRT Monitor/TV.  Make sure you discharge the capacitor before working on the TV.
+ - Amplifier - home stereo/receiver.
  - Microphone is used to record magnetic field (wave-form & intensity). i.e. Find a frequency that generates optimal magnetic pulse with the given equipment.
  - The Audacity pemf v1 plugin was built to test various frequencies and duty cycle for my amp/magnet.  Note your magnet/amplifier may have different optimizations.  Found high-end stereos have allot less distortion and can drive a stronger magnetic field at all frequencies.  Battery powered amplifiers do not drive the magnet very well.
  - Use Audacity to generate a pulse, and play it back while recording the result on another track in audacity.  This will show you the quality/intensity of the pulse.  I was aiming for High (+)pulse one direction with least amount (-)pulse below the line.  Too much volume or wrong stereo settings will distor the pulse.
@@ -39,5 +37,3 @@ Parts:
  - Once the magnet frequency is optimized then it is pulsed at low frequencies like 12Hz, 4Hz, 8Hz, 20Hz, 2Hz, 1Hz...
  - Finally generate 3-4 sets of frequencies to make a 30 minute session total. e.g. 125Hz@12Hz:10min, 125Hz@4Hz:10min, 125Hz@8Hz:10min = 30min.
  
- 
- I did not include square, sawtooth, or sine waves, because I was only interested in single polarity magnetic DC pulse.  I did not want an AC pulse.
