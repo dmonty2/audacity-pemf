@@ -6,13 +6,13 @@
 ;action "Generating PEMF Pulse ..."
 ;author "Dean Montgomery"
 ;copyright "Released under terms of the GNU General Public License version 2"
-;control ptable "Pulse Form" choice "Bassett,Bemer,Square,Sine" 0
+;control ptable "Wave Form" choice "Bassett,Bemer,Square,Sine" 0
 ;control magfreqs "frequency@pulse:minutes,... " string "comma seperated list integers" "880@10,787@8:5,727,20@10"
 ;control default_pulse "Default pulse Hz" int "default @Hz(20)" 20 1 900
 ;control default_time "Default time" int "default :minutes for each set (10)" 10 1 30
 ;control pulseduty "Pulse duty cycle" int "% (50)" 50 1 99
-;control magduty "Magnet duty cycle" int "% (5)" 5 1 99
-;control magamp "Magnet Amplitude" int "% (98)" 98 80 100
+;;control magduty "Magnet duty cycle" int "% (5)" 5 1 99
+;;control magamp "Magnet Amplitude" int "% (98)" 98 80 100
 
 ;; Big Thanks to Steve Daulton who provides excellent Audacity Nyquist support.
 
@@ -215,9 +215,9 @@
     (mult (/ peak) sig)))
 
 ;;; main driver
-(setf magduty (* magduty 0.01))
+;;(setf magduty (* magduty 0.01))
 (setf pulseduty (* pulseduty 0.01))
-(setf magamp (* magamp 0.01))
+;;(setf magamp (* magamp 0.01))
 (setf frqs (str-to-list magfreqs ","))
 (seqrep ( x (length frqs) )
   (nrmlz (pemf ( nth x frqs ))))
