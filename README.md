@@ -16,10 +16,7 @@ pemf-list.ny - Is for generating and testing multiple frequencies.   Pasting lis
  - frequency@pluserate:minutes,frequency2@pulserate2:minutes2,... comma seperated sets.  frequency the magnet runs at, [ optional @pulserate for magnet on/off Hz], [ optional :minutes to run ].  Can also invert the wave with -freq e.g. -120@8.
  - Default pulse Hz - when @pulserate is not specified.
  - Default time - minutes to run each set when :minutes is not specified.
- - Pulse duty cycle - % of the pulse cycle that will be in the ON state. (49-50% even on/off).  For some waveforms this is not implemented and defaults to 50%.
- - Magnet duty cycle - This is not used in current release and may soon be removed.  It was useful in finding an optimal duration of the main pulse which is 0.5ms to 1.0ms.  The magnetic field quickly falls off with longer duty cycles.
- - Magnet amplitude - just shy of 100% keeps waveform clean.  This has also been replaced with "normalize" function.
- -
+ - Pulse duty cycle - % of the low-frequency pulse that's in the ON state. Default is 50%.
 
 pemf-v3.ny - Has less options and is overall easier to operate.
  - magnet pulserate is fixed at 120Hz in a semi sawtooth DC pulse.
