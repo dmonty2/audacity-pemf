@@ -6,7 +6,7 @@
 ;action "Generating PEMF Pulse ..."
 ;author "Dean Montgomery"
 ;copyright "Released under terms of the GNU General Public License version 2"
-;control waveform "Wave Form" choice "Bassett 1,Bassett 2,Bemer 1,Bemer 2,Square,Sine" 0
+;control waveform "Wave Form" choice "Bassett 1,Bassett 2 DC offset +induction,Bemer 1,Bemer 2 DC offset +induction,Square,Sine" 0
 ;control magfreqs "frequency@pulse:minutes,... " string "comma seperated list integers" "880@10,787@8:5,727,20@10"
 ;control default_pulse "Default pulse Hz" int "default @Hz(20)" 20 1 900
 ;control default_time "Default time" int "default :minutes for each set (10)" 10 1 30
