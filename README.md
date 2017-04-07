@@ -14,7 +14,7 @@ pemf-list.ny - Is for generating and testing multiple frequencies.   Pasting lis
  - Run the magnet at a higher frequency and pulse the magnet at a low frequency.
  - Wave Form - Bassett,Bemer,Square,Sine.  This is the wave form of a single magnetic pulse that will be repeated at the higher frequency.
  - frequency@pluserate:minutes,frequency2@pulserate2:minutes2,... comma seperated sets.  frequency the magnet runs at, [ optional @pulserate for magnet on/off Hz], [ optional :minutes to run ].  Can also invert the wave with -freq e.g. -120@8.
- - Default pulse Hz - when @pulserate is not specified.
+ - Default pulse Hz - when @pulserate is not specified.   See wiki page for some example pulserates.
  - Default time - minutes to run each set when :minutes is not specified.
  - Pulse duty cycle - % of the low-frequency pulse that's in the ON state. Default is 50%.
 
@@ -27,10 +27,13 @@ pemf-v3.ny - Has less options and is overall easier to operate.
 Parts:
  - Deguasser coil from old CRT Monitor/TV.  Make sure you discharge the capacitor before working on the TV.
  - Amplifier - home stereo/receiver.
- - Microphone is used to record magnetic field (wave-form & intensity). i.e. Find a frequency that generates optimal magnetic pulse with the given equipment.
+ - Microphone is used to record magnetic induction field (wave-form & intensity). i.e. Find a frequency that generates optimal magnetic pulse with the given equipment.
  - The Audacity pemf v1 plugin was built to test various frequencies and duty cycle for my amp/magnet.  Note your magnet/amplifier may have different optimizations.  Found high-end stereos have allot less distortion and can drive a stronger magnetic field at all frequencies.  Battery powered amplifiers do not drive the magnet very well.
  - Use Audacity to generate a pulse, and play it back while recording the result on another track in audacity.  This will show you the quality/intensity of the pulse.  I was aiming for High (+)pulse one direction with least amount (-)pulse below the line.  Too much volume or wrong stereo settings will distor the pulse.
  - When recording - make sure Audacity's Preferences=>Recording=>Software Playthrough is unchecked.
  - Once the magnet frequency is optimized then it is pulsed at low frequencies like 12Hz, 4Hz, 8Hz, 20Hz, 2Hz, 1Hz...
  - Finally generate 3-4 sets of frequencies to make a 30 minute session total. e.g. 125Hz@12Hz:10min, 125Hz@4Hz:10min, 125Hz@8Hz:10min = 30min.
+ 
+ 
+ See wiki for more info https://github.com/dmonty2/audacity-pemf/wiki
  
