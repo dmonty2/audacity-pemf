@@ -17,8 +17,6 @@
 ;; Big Thanks to Steve Daulton who provides excellent Audacity Nyquist support.
 
 
-
-
 ;;; str-to-list - args: (string delimiter) - returns list
 (defun str-to-list ( str del )
     (if (setf pos (string-search del str))
@@ -149,16 +147,16 @@
   (setf sstep (/ range (1- num)))
   (setf ymax 0.0)
   (setf bemer-y 0.0)
+  (setf x-start 130) ;; add x offset  slows transition to dc-offset reduces negative induction on magnet.
+  (push (* (float x-start) xstep) mlist)
+  (push 0.0 mlist)
   (dotimes (i num)
     (setf y (+ xmin (* i sstep)))
-    (setf fi (* (float i) xstep))
+    (setf fi (* (float (+ i x-start)) xstep))
     (push fi mlist)
     (setf bemer-y (bemer y))
     (push bemer-y mlist)
     (if (> bemer-y ymax) (setf ymax bemer-y)))
-  ;;(print bemer-y)
-  ;;(push (* (float (+ num 80)) xstep) mlist)
-  ;;(push 0.0 mlist)
   ;; normalize the y axis
   (dotimes (i (length mlist))
     (if (evenp i)
@@ -170,7 +168,7 @@
       (if (not (eq (nth i mlist) 0))
         (setf (nth i mlist) (- (* (nth i mlist) 1.98) 0.98)))))
   (push 1 mlist)
-  (push -0.98 mlist)
+  (push -0.0 mlist)
   (setf mlist (reverse mlist))
   (list
     (pwl-list mlist)
