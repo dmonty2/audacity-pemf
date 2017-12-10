@@ -6,7 +6,7 @@ Disclaimer:  These plugins are not intended for the diagnosis, treatment or cure
 
 Use Google Scholar to find peer reviewed double-blind papers what PEMF is used for.  These plugins are for the purpose of finding optimal ways to generate electormagnetic pulses.
 
-I was introduced to a PEMF machine that helped several family ailments.  The machine was very expensive so I decided to build an ammeture one.  General idea is to find several wave forms + frequencies to drive the magnet and at the same time pulse that frequency on/off at a low rate.   I have no post-secondary training in electromagnets or biology.
+I was introduced to a PEMF machine that helped several family ailments.  The machine was very expensive so I decided to build an amateur one.  General idea is to find several wave forms + frequencies to drive the magnet and at the same time pulse that frequency on/off at a low rate.   I have no post-secondary training in electromagnets or biology.
 
 pemf-v1.ny - Is for generating and testing single freqencies.  Used this to test the amp and magnetic coil.
 
